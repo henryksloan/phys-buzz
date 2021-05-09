@@ -2,9 +2,9 @@ use crate::math::Real;
 
 use std::ops::{Add, AddAssign, Mul, MulAssign, Rem, RemAssign, Sub, SubAssign};
 
-/// Holds a vector with three components
+/// Holds a vector with three components.
 /// The default constructor create a zero vector
-#[derive(Default)]
+#[derive(Clone, Copy, Default)]
 pub struct Vector3 {
     x: Real,
     y: Real,
