@@ -6,9 +6,9 @@ use std::ops::{Add, AddAssign, Mul, MulAssign, Rem, RemAssign, Sub, SubAssign};
 /// The default constructor create a zero vector
 #[derive(Clone, Copy, Default)]
 pub struct Vector3 {
-    x: Real,
-    y: Real,
-    z: Real,
+    pub x: Real,
+    pub y: Real,
+    pub z: Real,
 }
 
 impl Vector3 {

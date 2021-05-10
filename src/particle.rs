@@ -69,4 +69,42 @@ impl Particle {
     pub fn set_inverse_mass(&mut self, inverse_mass: f32) {
         self.inverse_mass = inverse_mass;
     }
+
+    pub fn get_position(&self) -> Vector3 {
+        self.position
+    }
+
+    pub fn get_velocity(&self) -> Vector3 {
+        self.velocity
+    }
+
+    pub fn get_acceleration(&self) -> Vector3 {
+        self.acceleration
+    }
+
+    pub fn set_position(&mut self, x: Real, y: Real, z: Real) {
+        self.position.x = x;
+        self.position.y = y;
+        self.position.z = z;
+    }
+
+    pub fn set_velocity(&mut self, x: Real, y: Real, z: Real) {
+        self.velocity.x = x;
+        self.velocity.y = y;
+        self.velocity.z = z;
+    }
+
+    pub fn set_acceleration(&mut self, x: Real, y: Real, z: Real) {
+        self.acceleration.x = x;
+        self.acceleration.y = y;
+        self.acceleration.z = z;
+    }
+
+    pub fn get_damping(&mut self) -> Real {
+        self.damping
+    }
+
+    pub fn set_damping(&mut self, damping: Real) {
+        self.damping = damping;
+    }
 }
