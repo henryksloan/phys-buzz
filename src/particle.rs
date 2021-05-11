@@ -35,7 +35,7 @@ impl Particle {
         self.position.add_scaled_vector(&self.velocity, duration);
 
         // Update the acceleration by the force
-        let mut resultant = self.acceleration.clone();
+        let mut resultant = self.acceleration;
         resultant.add_scaled_vector(&self.force_accum, duration);
 
         // Update the velocity by the acceleration

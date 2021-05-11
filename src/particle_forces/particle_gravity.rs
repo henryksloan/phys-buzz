@@ -8,7 +8,7 @@ pub struct ParticleGravity {
 }
 
 impl ParticleForceGenerator for ParticleGravity {
-    fn update_force(&mut self, particle: &mut Particle, duration: Real) {
+    fn update_force(&mut self, particle: &mut Particle, _duration: Real) {
         if particle.has_finite_mass() {
             particle.add_force(&(self.gravity * particle.get_mass()));
         }
