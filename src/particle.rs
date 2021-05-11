@@ -43,6 +43,13 @@ impl Particle {
 
         // Impose drag and velocity damping
         self.velocity *= self.damping.powf(duration);
+
+        // Clear the force accumulator
+        self.clear_accumulator();
+    }
+
+    pub fn add_force(&mut self, force: &Vector3) {
+        self.force_accum += *force;
     }
 
     /// Returns the mass, or infinity if the inverse mass is zero
@@ -106,5 +113,11 @@ impl Particle {
 
     pub fn set_damping(&mut self, damping: Real) {
         self.damping = damping;
+    }
+
+    pub fn clear_accumulator(&mut self) {
+        self.force_accum.x = 0.0;
+        self.force_accum.y = 0.0;
+        self.force_accum.z = 0.0;
     }
 }
