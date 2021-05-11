@@ -77,6 +77,10 @@ impl Particle {
         self.inverse_mass = inverse_mass;
     }
 
+    pub fn has_finite_mass(&self) -> bool {
+        self.inverse_mass != 0.0
+    }
+
     pub fn get_position(&self) -> Vector3 {
         self.position
     }
