@@ -22,7 +22,7 @@ impl ParticleForceGenerator for ParticleAnchoredSpring {
         // A spring acts to pull the particle towards the rest length
         // with force proportional to the spring constant
         let magnitude = self.spring_constant * (distance - self.rest_length).abs();
-        particle.add_force(direction * -magnitude);
+        particle.add_force(&(direction * -magnitude));
     }
 }
 
