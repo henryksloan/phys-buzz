@@ -35,7 +35,7 @@ impl Particle {
         self.position.add_scaled_vector(&self.velocity, duration);
 
         // Update the acceleration by the force
-        let mut resultant = self.acceleration.clone();
+        let mut resultant = self.acceleration;
         resultant.add_scaled_vector(&self.force_accum, duration);
 
         // Update the velocity by the acceleration
@@ -43,6 +43,13 @@ impl Particle {
 
         // Impose drag and velocity damping
         self.velocity *= self.damping.powf(duration);
+
+        // Clear the force accumulator
+        self.clear_accumulator();
+    }
+
+    pub fn add_force(&mut self, force: &Vector3) {
+        self.force_accum += *force;
     }
 
     /// Returns the mass, or infinity if the inverse mass is zero
@@ -68,6 +75,10 @@ impl Particle {
     /// Sets the inverse of the particle's mass
     pub fn set_inverse_mass(&mut self, inverse_mass: f32) {
         self.inverse_mass = inverse_mass;
+    }
+
+    pub fn has_finite_mass(&self) -> bool {
+        self.inverse_mass != 0.0
     }
 
     pub fn get_position(&self) -> Vector3 {
@@ -106,5 +117,11 @@ impl Particle {
 
     pub fn set_damping(&mut self, damping: Real) {
         self.damping = damping;
+    }
+
+    pub fn clear_accumulator(&mut self) {
+        self.force_accum.x = 0.0;
+        self.force_accum.y = 0.0;
+        self.force_accum.z = 0.0;
     }
 }
